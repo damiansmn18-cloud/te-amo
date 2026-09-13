@@ -6,778 +6,766 @@
 <title>Para el amor de mi vida ❤️</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
 }
 
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    font-family: Georgia, serif;
-    color: white;
-    background:
-        radial-gradient(circle at 50% 20%, rgba(255,70,150,.20), transparent 35%),
-        linear-gradient(135deg, #09000b, #210014, #090008);
+body{
+  min-height:100vh;
+  overflow:hidden;
+  color:white;
+  font-family:Georgia,serif;
+  background:radial-gradient(
+    circle at 50% 25%,
+    #4b0b38 0,
+    #1c0018 42%,
+    #060006 100%
+  );
 }
 
-/* Estrellas */
-.stars {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
+#stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none
 }
 
-.star {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: white;
-    border-radius: 50%;
-    opacity: .7;
-    animation: twinkle 2s infinite alternate;
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:#fff;
+  border-radius:50%;
+  animation:twinkle 2s infinite alternate
 }
 
-@keyframes twinkle {
-    from { opacity: .2; transform: scale(.7); }
-    to { opacity: 1; transform: scale(1.4); }
+@keyframes twinkle{
+  from{opacity:.15}
+  to{opacity:1}
 }
 
-/* Pantalla inicial */
-#welcome {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 25px;
-
-    background:
-        linear-gradient(rgba(10,0,10,.55), rgba(10,0,10,.85)),
-        url("https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1200&q=90")
-        center/cover;
+main{
+  position:relative;
+  z-index:2;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px
 }
 
-.welcomeBox {
-    max-width: 430px;
-    padding: 35px 25px;
-    border-radius: 30px;
-    background: rgba(20,0,15,.65);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,130,190,.3);
-    box-shadow: 0 0 50px rgba(255,30,140,.25);
+.small{
+  font-size:18px;
+  opacity:.9;
+  margin-bottom:8px
 }
 
-.welcomeBox h1 {
-    font-size: 42px;
-    color: #ff9bd5;
-    text-shadow: 0 0 20px #ff238d;
-    margin-bottom: 20px;
+h1{
+  font-size:clamp(52px,14vw,96px);
+  color:#ff79c5;
+  text-shadow:
+    0 0 12px #ff168d,
+    0 0 35px #ff168d;
+  animation:pulse 2s infinite alternate
 }
 
-.welcomeBox p {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 30px;
+@keyframes pulse{
+  to{transform:scale(1.04)}
 }
 
-/* Contenido */
-main {
-    position: relative;
-    z-index: 2;
-    min-height: 100vh;
-    text-align: center;
-    padding: 60px 20px;
+.subtitle{
+  font-size:17px;
+  opacity:.85;
+  margin:12px 0 18px
 }
 
-h1 {
-    font-size: clamp(45px, 12vw, 85px);
-    color: #ff75bd;
-    text-shadow:
-        0 0 10px #ff168d,
-        0 0 30px #ff168d,
-        0 0 60px #ff168d;
-    animation: pulse 2s infinite alternate;
+button{
+  border:0;
+  color:#fff;
+  cursor:pointer;
+  padding:15px 30px;
+  margin:7px;
+  border-radius:50px;
+  font-size:18px;
+  font-weight:bold;
+  background:linear-gradient(
+    135deg,
+    #ff197e,
+    #ff65b1
+  );
+  box-shadow:0 0 20px rgba(255,30,140,.55);
+  transition:.2s
 }
 
-@keyframes pulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.04); }
+button:active{
+  transform:scale(.94)
 }
 
-.subtitle {
-    margin-top: 10px;
-    font-size: 18px;
-    opacity: .9;
+#musicBtn{
+  font-size:15px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,140,200,.45)
 }
 
-button {
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px 30px;
-    border-radius: 50px;
-    margin: 12px 5px;
-    background: linear-gradient(135deg, #ff2f91, #ff69b4);
-    box-shadow:
-        0 0 15px rgba(255,50,150,.6),
-        inset 0 1px rgba(255,255,255,.4);
-    transition: .25s;
+.counter{
+  font-size:20px;
+  margin-top:12px
 }
 
-button:hover {
-    transform: scale(1.08);
+#flowers{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:10
 }
 
-button:active {
-    transform: scale(.95);
+.flower{
+  position:absolute;
+  font-size:clamp(42px,10vw,75px);
+  filter:drop-shadow(
+    0 0 10px rgba(255,80,180,.65)
+  );
+  animation:
+    flowerIn .65s ease-out forwards,
+    float 3s ease-in-out infinite alternate
 }
 
-.counter {
-    margin-top: 20px;
-    font-size: 20px;
+@keyframes flowerIn{
+  0%{
+    opacity:0;
+    transform:scale(0) rotate(-35deg)
+  }
+
+  70%{
+    opacity:1;
+    transform:scale(1.18) rotate(8deg)
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1) rotate(var(--r))
+  }
 }
 
-#flowerArea {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 10;
+@keyframes float{
+  to{
+    margin-top:12px
+  }
 }
 
-/* FLORES REALES */
-.realFlower {
-    position: absolute;
-    width: 115px;
-    height: 115px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid rgba(255,255,255,.75);
-
-    box-shadow:
-        0 0 15px rgba(255,100,180,.8),
-        0 0 35px rgba(255,30,140,.4);
-
-    animation: flowerAppear 1s ease-out forwards,
-               flowerFloat 5s ease-in-out 1s infinite alternate;
+.heart{
+  position:fixed;
+  bottom:-30px;
+  z-index:30;
+  pointer-events:none;
+  animation:up 4s linear forwards
 }
 
-@keyframes flowerAppear {
-    0% {
-        transform: scale(0) rotate(-30deg);
-        opacity: 0;
-    }
-
-    70% {
-        transform: scale(1.15) rotate(8deg);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(1) rotate(0);
-        opacity: 1;
-    }
+@keyframes up{
+  to{
+    transform:
+      translateY(-110vh)
+      scale(1.4)
+      rotate(25deg);
+    opacity:0
+  }
 }
 
-@keyframes flowerFloat {
-    from {
-        margin-top: -8px;
-    }
-
-    to {
-        margin-top: 12px;
-    }
+.overlay{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(5,0,8,.82);
+  backdrop-filter:blur(9px)
 }
 
-/* Corazones */
-.heart {
-    position: fixed;
-    bottom: -30px;
-    font-size: 25px;
-    pointer-events: none;
-    animation: heartUp 4s linear forwards;
-    z-index: 20;
+.card{
+  width:min(500px,94%);
+  max-height:86vh;
+  overflow:auto;
+  padding:34px 25px;
+  text-align:center;
+  color:#571436;
+  background:linear-gradient(
+    145deg,
+    #fff1f7,
+    #ffd7e9
+  );
+  border-radius:28px;
+  box-shadow:
+    0 0 55px rgba(255,30,150,.5);
+  animation:cardIn .6s ease
 }
 
-@keyframes heartUp {
-    from {
-        transform: translateY(0) scale(.5) rotate(0);
-        opacity: 1;
-    }
+@keyframes cardIn{
+  from{
+    transform:scale(.65) rotate(-4deg);
+    opacity:0
+  }
 
-    to {
-        transform: translateY(-110vh) scale(1.5) rotate(25deg);
-        opacity: 0;
-    }
+  to{
+    transform:scale(1);
+    opacity:1
+  }
 }
 
-/* Ventanas */
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(5,0,8,.82);
-    backdrop-filter: blur(8px);
-    z-index: 80;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+.card h2{
+  font-size:30px;
+  color:#d51d73;
+  margin-bottom:18px
 }
 
-.letter {
-    width: min(90%, 500px);
-    max-height: 85vh;
-    overflow-y: auto;
-    padding: 35px 25px;
-    text-align: center;
-
-    background:
-        linear-gradient(rgba(255,230,242,.94), rgba(255,210,232,.94)),
-        url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=90")
-        center/cover;
-
-    color: #4d1234;
-    border-radius: 25px;
-
-    box-shadow:
-        0 0 40px rgba(255,50,160,.6),
-        0 0 100px rgba(255,20,120,.3);
-
-    animation: letterIn .7s ease;
+.card p{
+  font-size:17px;
+  line-height:1.8;
+  margin:13px 0
 }
 
-@keyframes letterIn {
-    from {
-        transform: scale(.5) rotate(-5deg);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1) rotate(0);
-        opacity: 1;
-    }
+.special{
+  color:#d41468;
+  font-weight:bold
 }
 
-.letter h2 {
-    color: #d62476;
-    font-size: 30px;
-    margin-bottom: 20px;
+#garden{
+  width:min(620px,95vw);
+  min-height:560px;
+  padding:35px 20px;
+  position:relative;
+  overflow:hidden;
+  border-radius:32px;
+  text-align:center;
+  background:radial-gradient(
+    circle at 50% 65%,
+    #651b48,
+    #17000f 75%
+  );
+  box-shadow:
+    0 0 70px rgba(255,30,150,.45)
 }
 
-.letter p {
-    font-size: 18px;
-    line-height: 1.8;
-    margin: 14px 0;
+#garden h2{
+  position:relative;
+  z-index:5;
+  color:#ff9bd5;
+  font-size:38px;
+  text-shadow:0 0 20px #ff258f
 }
 
-.special {
-    color: #d41468;
-    font-weight: bold;
+#garden p{
+  position:relative;
+  z-index:5;
+  max-width:440px;
+  margin:18px auto;
+  font-size:18px;
+  line-height:1.7
 }
 
-/* Jardín */
-.garden {
-    position: relative;
-    width: min(95vw, 600px);
-    min-height: 500px;
-    overflow: hidden;
-    padding: 40px 20px;
-    border-radius: 30px;
-
-    background:
-        linear-gradient(rgba(10,0,10,.45), rgba(10,0,10,.75)),
-        url("https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=1200&q=90")
-        center/cover;
-
-    box-shadow: 0 0 70px rgba(255,30,140,.45);
+.gardenFlower{
+  position:absolute;
+  font-size:58px;
+  animation:
+    gfloat 3s infinite alternate ease-in-out;
+  filter:drop-shadow(
+    0 0 9px rgba(255,80,180,.65)
+  )
 }
 
-.garden h2 {
-    position: relative;
-    z-index: 5;
-    font-size: 38px;
-    color: #ff9bd4;
-    text-shadow: 0 0 15px #ff258e;
+@keyframes gfloat{
+  to{
+    transform:
+      translateY(10px)
+      rotate(7deg)
+  }
 }
 
-.garden p {
-    position: relative;
-    z-index: 5;
-    margin: 20px auto;
-    max-width: 430px;
-    font-size: 18px;
-    line-height: 1.7;
+#welcome{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+  background:radial-gradient(
+    circle at 50% 30%,
+    rgba(110,15,75,.75),
+    rgba(5,0,8,.96)
+  )
 }
 
-.gardenFlower {
-    position: absolute;
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,.7);
-    box-shadow: 0 0 20px rgba(255,70,170,.7);
-    animation: gardenFloat 4s infinite alternate ease-in-out;
+.welcomeBox{
+  width:min(430px,92%);
+  padding:38px 25px;
+  border-radius:30px;
+  background:rgba(35,0,24,.78);
+  border:1px solid rgba(255,130,200,.35);
+  box-shadow:
+    0 0 45px rgba(255,20,140,.35);
+  backdrop-filter:blur(14px)
 }
 
-@keyframes gardenFloat {
-    from {
-        transform: translateY(-5px) rotate(-3deg);
-    }
-
-    to {
-        transform: translateY(8px) rotate(4deg);
-    }
+.welcomeBox h2{
+  font-size:40px;
+  color:#ff9bd5;
+  text-shadow:0 0 20px #ff258f;
+  margin-bottom:18px
 }
 
-.hidden {
-    display: none !important;
-}
-
-#musicButton {
-    background: rgba(255,255,255,.1);
-    border: 1px solid rgba(255,130,190,.5);
-    font-size: 15px;
+.welcomeBox p{
+  font-size:18px;
+  line-height:1.7;
+  margin-bottom:25px
 }
 </style>
 </head>
 
 <body>
 
-<div class="stars" id="stars"></div>
+<div id="stars"></div>
 
-<!-- PANTALLA INICIAL -->
 <div id="welcome">
-    <div class="welcomeBox">
+  <div class="welcomeBox">
 
-        <h1>Una sorpresa para ti ❤️</h1>
+    <h2>
+      Una sorpresa para ti ❤️
+    </h2>
 
-        <p>
-            Preparé algo especial para ti...<br>
-            porque te mereces todo lo bonito del mundo. 🌷
-        </p>
+    <p>
+      Preparé algo especial para ti...<br>
+      porque te mereces todo lo bonito del mundo. 🌷
+    </p>
 
-        <button onclick="startPage()">
-            Entrar ❤️
-        </button>
+    <button onclick="entrar()">
+      Entrar ❤️
+    </button>
 
-    </div>
+  </div>
 </div>
 
-<!-- FLORES -->
-<div id="flowerArea"></div>
+<div id="flowers"></div>
 
-<!-- PÁGINA PRINCIPAL -->
 <main>
 
-    <div class="subtitle">
-        Tengo algo que decirte...
-    </div>
+  <div class="small">
+    Tengo algo que decirte...
+  </div>
 
-    <h1>TE AMO ❤️</h1>
+  <h1>
+    TE AMO ❤️
+  </h1>
 
-    <p class="subtitle">
-        Presiona el botón cada vez que quieras una flor 🌷
-    </p>
+  <div class="subtitle">
+    Presiona el botón cada vez que quieras una flor 🌷
+  </div>
 
-    <br>
+  <button onclick="darFlor()">
+    TE AMO ❤️
+  </button>
 
-    <button onclick="giveFlower()">
-        TE AMO ❤️
-    </button>
+  <button
+    id="musicBtn"
+    onclick="toggleMusic()">
+    🎵 Encender música
+  </button>
 
-    <br>
-
-    <button id="musicButton" onclick="toggleMusic()">
-        🎵 Música
-    </button>
-
-    <div class="counter">
-        Flores para ti:
-        <strong id="count">0</strong> 🌷
-    </div>
-
-    <p style="margin-top:25px; opacity:.7;">
-        Hecho especialmente para ti ❤️
-    </p>
+  <div class="counter">
+    Flores para ti:
+    <b id="contador">0</b> 🌷
+  </div>
 
 </main>
 
-<!-- CARTA DE 10 FLORES -->
-<div class="overlay" id="letterOverlay">
+<div class="overlay" id="cartaOverlay">
 
-    <div class="letter">
+  <div class="card">
 
-        <h2>Para el amor de mi vida 🌷</h2>
+    <h2>
+      Para el amor de mi vida 🌷
+    </h2>
 
-        <p>
-            Tal vez estas flores parezcan muchas...
-            pero en realidad no son ni una pequeña parte
-            de todo lo que siento por ti.
-        </p>
+    <p>
+      Tal vez estas flores parezcan muchas...
+      pero en realidad no son ni una pequeña parte
+      de todo lo que siento por ti.
+    </p>
 
-        <p>
-            Cada vez que presionaste el botón,
-            apareció una flor.
-        </p>
+    <p>
+      Cada vez que presionaste el botón,
+      apareció una flor.
+    </p>
 
-        <p>
-            Y así como las flores siguen creciendo,
-            <span class="special">
-                mi amor por ti también. ❤️
-            </span>
-        </p>
+    <p>
+      Y así como las flores siguen creciendo,
+      <span class="special">
+        mi amor por ti también. ❤️
+      </span>
+    </p>
 
-        <p class="special">
-            Y todavía me faltan millones de flores
-            para demostrarte cuánto te amo.
-        </p>
+    <p class="special">
+      Y todavía me faltan millones de flores
+      para demostrarte cuánto te amo.
+    </p>
 
-        <p>
-            Gracias por existir, por estar en mi vida
-            y por hacer mis días mucho más bonitos.
-        </p>
+    <p>
+      Gracias por existir, por estar en mi vida
+      y por hacer mis días mucho más bonitos.
+    </p>
 
-        <p>
-            Te amo muchísimo. ❤️
-        </p>
+    <p>
+      Te amo muchísimo. ❤️
+    </p>
 
-        <button onclick="closeLetter()">
-            Seguir regalándote flores 🌷
-        </button>
+    <button onclick="cerrarCarta()">
+      Seguir regalándote flores 🌷
+    </button>
 
-    </div>
+  </div>
 
 </div>
 
-<!-- SEGUNDA SORPRESA -->
 <div class="overlay" id="gardenOverlay">
 
-    <div class="garden" id="garden">
+  <div id="garden">
 
-        <h2>🌷 Un jardín para ti 🌷</h2>
+    <h2>
+      🌷 Un jardín para ti 🌷
+    </h2>
 
-        <p>
-            Si pudiera regalarte una flor por cada vez
-            que pienso en ti, tendría un jardín infinito.
-        </p>
+    <p>
+      Si pudiera regalarte una flor por cada vez
+      que pienso en ti, tendría un jardín infinito.
+    </p>
 
-        <p>
-            Y aun así, seguirían faltando flores
-            para decirte cuánto te amo. 🥹❤️
-        </p>
+    <p>
+      Y aun así, seguirían faltando flores
+      para decirte cuánto te amo. 🥹❤️
+    </p>
 
-        <button onclick="closeGarden()">
-            Seguir ❤️
-        </button>
+    <button onclick="cerrarJardin()">
+      Seguir ❤️
+    </button>
 
-    </div>
+  </div>
 
 </div>
 
-<audio id="music" loop preload="auto">
-    <source src="musica.mp3" type="audio/mpeg">
+
+<!--
+====================================================
+MÚSICA INTEGRADA
+====================================================
+
+Aquí va la canción convertida a Base64.
+
+No necesitas musica.mp3 separado.
+
+El archivo completo que te generé anteriormente
+ya contiene toda la canción aquí.
+
+====================================================
+-->
+
+<audio
+  id="audio"
+  src="data:audio/mpeg;base64,AQUI_VA_LA_MUSICA_BASE64"
+  preload="auto"
+  loop>
 </audio>
+
 
 <script>
 
-/* =========================
-   FLORES REALES
-========================= */
-
-const flowers = [
-
-    // Gerbera
-    "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=500&q=90",
-
-    // Tulipán
-    "https://images.unsplash.com/photo-1520863187037-9f2f7f9b9a5e?auto=format&fit=crop&w=500&q=90",
-
-    // Lirio
-    "https://images.unsplash.com/photo-1509223197845-458d87318791?auto=format&fit=crop&w=500&q=90",
-
-    // Flores rosas
-    "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=500&q=90",
-
-    // Tulipanes
-    "https://images.unsplash.com/photo-1520013333831-acd3f7d4c8d8?auto=format&fit=crop&w=500&q=90"
+const tiposFlor = [
+  "🌷",
+  "🌹",
+  "🌸",
+  "🌺",
+  "🌻",
+  "💐",
+  "🌼",
+  "🪻"
 ];
 
-let count = 0;
+let contador = 0;
 
-const music = document.getElementById("music");
+const audio =
+  document.getElementById("audio");
+
+const musicBtn =
+  document.getElementById("musicBtn");
 
 
-/* =========================
-   INICIAR
-========================= */
+function entrar(){
 
-function startPage() {
+  document
+    .getElementById("welcome")
+    .style.display = "none";
 
-    document.getElementById("welcome").style.display = "none";
+  reproducirMusica();
 
-    music.volume = 0.7;
+  corazones(10);
+}
 
-    music.play().catch(() => {
-        console.log("El navegador bloqueó el autoplay.");
+
+function reproducirMusica(){
+
+  audio.volume = .75;
+
+  audio.play()
+    .then(() => {
+
+      musicBtn.textContent =
+        "🔊 Música encendida";
+
+    })
+    .catch(() => {
+
+      musicBtn.textContent =
+        "🎵 Toca para encender";
+
     });
 
-    lanzarCorazones();
 }
 
 
-/* =========================
-   DAR FLOR
-========================= */
+function toggleMusic(){
 
-function giveFlower() {
+  if(audio.paused){
 
-    count++;
+    reproducirMusica();
 
-    document.getElementById("count").textContent = count;
+  }else{
 
-    const flower =
-        document.createElement("img");
+    audio.pause();
 
-    flower.className = "realFlower";
+    musicBtn.textContent =
+      "🔇 Música apagada";
 
-    flower.src =
-        flowers[Math.floor(Math.random() * flowers.length)];
-
-    /* Posición aleatoria */
-
-    const x =
-        Math.random() * (window.innerWidth - 130);
-
-    const y =
-        Math.random() * (window.innerHeight - 180) + 70;
-
-    flower.style.left = x + "px";
-    flower.style.top = y + "px";
-
-    /* Tamaño aleatorio */
-
-    const size =
-        85 + Math.random() * 55;
-
-    flower.style.width = size + "px";
-    flower.style.height = size + "px";
-
-    document.getElementById("flowerArea")
-        .appendChild(flower);
-
-    lanzarCorazones();
-
-    /* 10 flores */
-
-    if (count === 10) {
-
-        setTimeout(() => {
-
-            document.getElementById("letterOverlay")
-                .style.display = "flex";
-
-        }, 600);
-
-    }
-
-    /* 20 flores */
-
-    if (count === 20) {
-
-        setTimeout(() => {
-
-            document.getElementById("gardenOverlay")
-                .style.display = "flex";
-
-            createGarden();
-
-        }, 700);
-
-    }
+  }
 
 }
 
 
-/* =========================
-   CERRAR CARTA
-========================= */
+function darFlor(){
 
-function closeLetter() {
+  contador++;
 
-    document.getElementById("letterOverlay")
-        .style.display = "none";
-
-}
+  document
+    .getElementById("contador")
+    .textContent = contador;
 
 
-/* =========================
-   JARDÍN
-========================= */
+  const flor =
+    document.createElement("div");
 
-function createGarden() {
+  flor.className = "flower";
 
-    const garden =
-        document.getElementById("garden");
-
-    for (let i = 0; i < 18; i++) {
-
-        const flower =
-            document.createElement("img");
-
-        flower.className = "gardenFlower";
-
-        flower.src =
-            flowers[Math.floor(Math.random() * flowers.length)];
-
-        flower.style.left =
-            Math.random() * 85 + "%";
-
-        flower.style.top =
-            35 + Math.random() * 58 + "%";
-
-        flower.style.animationDelay =
-            Math.random() * 3 + "s";
-
-        const size =
-            55 + Math.random() * 50;
-
-        flower.style.width = size + "px";
-        flower.style.height = size + "px";
-
-        garden.appendChild(flower);
-    }
-}
+  flor.textContent =
+    tiposFlor[
+      Math.floor(
+        Math.random() * tiposFlor.length
+      )
+    ];
 
 
-/* =========================
-   CERRAR JARDÍN
-========================= */
+  flor.style.left =
+    (Math.random() * 78 + 8) + "vw";
 
-function closeGarden() {
-
-    document.getElementById("gardenOverlay")
-        .style.display = "none";
-
-}
+  flor.style.top =
+    (Math.random() * 65 + 12) + "vh";
 
 
-/* =========================
-   CORAZONES
-========================= */
+  flor.style.setProperty(
+    "--r",
+    (-15 + Math.random() * 30) + "deg"
+  );
 
-function crearCorazon() {
 
-    const heart =
-        document.createElement("div");
+  document
+    .getElementById("flowers")
+    .appendChild(flor);
 
-    heart.className = "heart";
 
-    heart.textContent =
-        Math.random() > .5 ? "❤️" : "💕";
+  corazones(5);
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
 
-    heart.style.fontSize =
-        18 + Math.random() * 25 + "px";
-
-    heart.style.animationDuration =
-        3 + Math.random() * 3 + "s";
-
-    document.body.appendChild(heart);
+  if(contador === 10){
 
     setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}
+
+      document
+        .getElementById("cartaOverlay")
+        .style.display = "flex";
+
+    },500);
+
+  }
 
 
-function lanzarCorazones() {
+  if(contador === 20){
 
-    for (let i = 0; i < 8; i++) {
+    setTimeout(() => {
 
-        setTimeout(() => {
-            crearCorazon();
-        }, i * 120);
+      document
+        .getElementById("gardenOverlay")
+        .style.display = "flex";
 
-    }
+      crearJardin();
 
-}
+    },500);
 
-
-/* =========================
-   MÚSICA
-========================= */
-
-function toggleMusic() {
-
-    if (music.paused) {
-
-        music.play();
-
-        document.getElementById("musicButton")
-            .textContent = "🔊 Música";
-
-    } else {
-
-        music.pause();
-
-        document.getElementById("musicButton")
-            .textContent = "🔇 Música";
-
-    }
+  }
 
 }
 
 
-/* =========================
-   ESTRELLAS
-========================= */
+function cerrarCarta(){
 
-const stars =
-    document.getElementById("stars");
+  document
+    .getElementById("cartaOverlay")
+    .style.display = "none";
 
-for (let i = 0; i < 80; i++) {
+}
 
-    const star =
+
+function crearJardin(){
+
+  const garden =
+    document.getElementById("garden");
+
+
+  document
+    .querySelectorAll(".gardenFlower")
+    .forEach(e => e.remove());
+
+
+  for(let i = 0; i < 22; i++){
+
+    const f =
+      document.createElement("div");
+
+    f.className =
+      "gardenFlower";
+
+
+    f.textContent =
+      tiposFlor[
+        Math.floor(
+          Math.random() *
+          tiposFlor.length
+        )
+      ];
+
+
+    f.style.left =
+      (Math.random() * 88) + "%";
+
+
+    f.style.top =
+      (42 + Math.random() * 50) + "%";
+
+
+    f.style.animationDelay =
+      (Math.random() * 2) + "s";
+
+
+    garden.appendChild(f);
+
+  }
+
+}
+
+
+function cerrarJardin(){
+
+  document
+    .getElementById("gardenOverlay")
+    .style.display = "none";
+
+}
+
+
+function corazones(cantidad){
+
+  for(let i = 0; i < cantidad; i++){
+
+    setTimeout(() => {
+
+      const h =
         document.createElement("div");
 
-    star.className = "star";
+      h.className = "heart";
 
-    star.style.left =
-        Math.random() * 100 + "%";
 
-    star.style.top =
-        Math.random() * 100 + "%";
+      h.textContent =
+        Math.random() > .5
+        ? "❤️"
+        : "💕";
 
-    star.style.animationDelay =
-        Math.random() * 3 + "s";
 
-    stars.appendChild(star);
+      h.style.left =
+        (Math.random() * 100) + "vw";
+
+
+      h.style.fontSize =
+        (18 + Math.random() * 25) + "px";
+
+
+      h.style.animationDuration =
+        (3 + Math.random() * 2) + "s";
+
+
+      document.body.appendChild(h);
+
+
+      setTimeout(() => {
+
+        h.remove();
+
+      },5500);
+
+    },i * 90);
+
+  }
+
 }
 
 
-/* =========================
-   INTENTO DE AUTOPLAY
-========================= */
+const stars =
+  document.getElementById("stars");
 
-window.addEventListener("load", () => {
 
-    music.volume = 0.7;
+for(let i = 0; i < 90; i++){
 
-    music.play().catch(() => {
-        // El navegador puede bloquear
-        // música automática con sonido.
-    });
+  const s =
+    document.createElement("div");
 
-});
+  s.className = "star";
+
+
+  s.style.left =
+    (Math.random() * 100) + "%";
+
+
+  s.style.top =
+    (Math.random() * 100) + "%";
+
+
+  s.style.animationDelay =
+    (Math.random() * 3) + "s";
+
+
+  stars.appendChild(s);
+
+}
 
 </script>
 
