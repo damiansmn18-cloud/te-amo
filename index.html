@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle at 50% 20%,#ff7ebd55,transparent 35%),
+        linear-gradient(135deg,#120018,#36002f,#14001d);
+}
+
+/* Estrellitas */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(white 1px,transparent 1px);
+    background-size:35px 35px;
+    opacity:.2;
+    animation:stars 10s linear infinite;
+}
+
+@keyframes stars{
+    from{transform:translateY(0)}
+    to{transform:translateY(35px)}
+}
+
+.container{
+    position:relative;
+    z-index:5;
+    text-align:center;
+    padding:25px;
+}
+
+.small{
+    font-size:15px;
+    opacity:.8;
+    margin-bottom:10px;
+}
+
+h1{
+    font-size:clamp(48px,14vw,90px);
+    letter-spacing:5px;
+    text-shadow:
+        0 0 10px #ff70b8,
+        0 0 30px #ff2090,
+        0 0 70px #ff007f;
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.06)}
+}
+
+.subtitle{
+    margin-top:12px;
+    font-size:17px;
+    opacity:.9;
+}
+
+button{
+    display:block;
+    margin:30px auto 0;
+    border:0;
+    border-radius:60px;
+    padding:20px 42px;
+    color:white;
+    font-size:23px;
+    font-weight:bold;
+    letter-spacing:2px;
+    background:linear-gradient(135deg,#ff4ca3,#ff006e);
+    box-shadow:
+        0 0 15px #ff3d9a,
+        0 0 45px #ff007f88;
+    transition:.2s;
+}
+
+button:active{
+    transform:scale(.88);
+}
+
+.music{
+    margin-top:15px;
+    padding:12px 22px;
+    font-size:15px;
+    background:#ffffff18;
+    box-shadow:none;
+    border:1px solid #ffffff35;
+}
+
+.counter{
+    margin-top:18px;
+    opacity:.7;
+    font-size:14px;
+}
+
+/* Flores */
+.flower{
+    position:fixed;
+    z-index:3;
+    pointer-events:none;
+    animation:flowerIn 1.5s ease-out forwards;
+    filter:drop-shadow(0 0 12px #ffffff99);
+}
+
+@keyframes flowerIn{
+    0%{
+        transform:scale(0) rotate(-45deg);
+        opacity:0;
+    }
+    40%{
+        transform:scale(1.35) rotate(15deg);
+        opacity:1;
+    }
+    100%{
+        transform:scale(1) rotate(0);
+        opacity:1;
+    }
+}
+
+/* Corazones */
+.heart{
+    position:fixed;
+    bottom:-40px;
+    pointer-events:none;
+    z-index:2;
+    animation:up linear forwards;
+    opacity:.8;
+}
+
+@keyframes up{
+    to{
+        transform:translateY(-115vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Mensaje */
+.message{
+    position:fixed;
+    top:12%;
+    left:50%;
+    transform:translate(-50%,-20px);
+    opacity:0;
+    z-index:10;
+    font-size:22px;
+    font-weight:bold;
+    text-align:center;
+    text-shadow:0 0 15px #ff4da6;
+    transition:.4s;
+    pointer-events:none;
+}
+
+.message.show{
+    transform:translate(-50%,0);
+    opacity:1;
+}
+
+/* Firma */
+.signature{
+    margin-top:25px;
+    font-size:14px;
+    opacity:.55;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="small">Tengo algo que decirte...</div>
+
+    <h1>TE AMO ❤️</h1>
+
+    <div class="subtitle">
+        Presiona el botón cada vez que quieras una flor 🌷
+    </div>
+
+    <button onclick="teAmo()">
+        TE AMO ❤️
+    </button>
+
+    <button class="music" onclick="toggleMusic()" id="musicBtn">
+        🎵 Poner música
+    </button>
+
+    <div class="counter">
+        Flores para ti: <span id="count">0</span> 🌸
+    </div>
+
+    <div class="signature">
+        Hecho especialmente para ti ❤️
+    </div>
+
+</div>
+
+<div id="message" class="message">
+    🌷 Una flor para ti ❤️
+</div>
+
+<!-- Música -->
+<audio id="music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let count = 0;
+
+const flowers = [
+    "🌷",
+    "🌸",
+    "🌺",
+    "🌼",
+    "🪻",
+    "🌹",
+    "💐"
+];
+
+const messages = [
+    "🌷 Una flor para la niña que amo ❤️",
+    "🌸 Porque te mereces todas las flores",
+    "🌺 Te amo muchísimo",
+    "🌼 Eres demasiado especial para mí",
+    "🪻 Una flor más para ti",
+    "🌹 Te volvería a elegir una y otra vez",
+    "💐 Todas estas flores son para ti ❤️"
+];
+
+function teAmo(){
+
+    count++;
+
+    document.getElementById("count").textContent = count;
+
+    /* Crear flor */
+    const flower = document.createElement("div");
+
+    flower.className = "flower";
+
+    flower.textContent =
+        flowers[Math.floor(Math.random()*flowers.length)];
+
+    flower.style.left =
+        (Math.random()*88 + 4) + "vw";
+
+    flower.style.top =
+        (Math.random()*75 + 8) + "vh";
+
+    flower.style.fontSize =
+        (45 + Math.random()*35) + "px";
+
+    document.body.appendChild(flower);
+
+    /* Mensaje */
+    const message = document.getElementById("message");
+
+    message.textContent =
+        messages[Math.floor(Math.random()*messages.length)];
+
+    message.classList.add("show");
+
+    setTimeout(()=>{
+        message.classList.remove("show");
+    },1800);
+
+    /* Música comienza con el primer clic */
+    const music = document.getElementById("music");
+
+    if(music.paused){
+        music.volume = 0.55;
+        music.play().catch(()=>{});
+        document.getElementById("musicBtn").textContent =
+            "🔊 Música encendida";
+    }
+}
+
+
+/* Música */
+function toggleMusic(){
+
+    const music = document.getElementById("music");
+    const btn = document.getElementById("musicBtn");
+
+    if(music.paused){
+
+        music.volume = 0.55;
+
+        music.play().then(()=>{
+            btn.textContent = "🔊 Música encendida";
+        }).catch(()=>{
+            alert("Pon el archivo musica.mp3 junto al HTML ❤️");
+        });
+
+    }else{
+
+        music.pause();
+        btn.textContent = "🎵 Poner música";
+    }
+}
+
+
+/* Corazones flotando */
+setInterval(()=>{
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const hearts = [
+        "❤️","💗","💖","💕","💓","💞"
+    ];
+
+    heart.textContent =
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left =
+        Math.random()*100 + "vw";
+
+    heart.style.fontSize =
+        (15 + Math.random()*25) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random()*5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+
+},650);
+
+</script>
+
+</body>
+</html>
