@@ -3,352 +3,781 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti ❤️</title>
+<title>Para el amor de mi vida ❤️</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    height:100vh;
-    overflow:hidden;
-    font-family:Arial,sans-serif;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Georgia, serif;
+    color: white;
     background:
-        radial-gradient(circle at 50% 20%,#ff7ebd55,transparent 35%),
-        linear-gradient(135deg,#120018,#36002f,#14001d);
+        radial-gradient(circle at 50% 20%, rgba(255,70,150,.20), transparent 35%),
+        linear-gradient(135deg, #09000b, #210014, #090008);
 }
 
-/* Estrellitas */
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image:
-        radial-gradient(white 1px,transparent 1px);
-    background-size:35px 35px;
-    opacity:.2;
-    animation:stars 10s linear infinite;
+/* Estrellas */
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
 }
 
-@keyframes stars{
-    from{transform:translateY(0)}
-    to{transform:translateY(35px)}
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: .7;
+    animation: twinkle 2s infinite alternate;
 }
 
-.container{
-    position:relative;
-    z-index:5;
-    text-align:center;
-    padding:25px;
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.4); }
 }
 
-.small{
-    font-size:15px;
-    opacity:.8;
-    margin-bottom:10px;
+/* Pantalla inicial */
+#welcome {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+
+    background:
+        linear-gradient(rgba(10,0,10,.55), rgba(10,0,10,.85)),
+        url("https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1200&q=90")
+        center/cover;
 }
 
-h1{
-    font-size:clamp(48px,14vw,90px);
-    letter-spacing:5px;
+.welcomeBox {
+    max-width: 430px;
+    padding: 35px 25px;
+    border-radius: 30px;
+    background: rgba(20,0,15,.65);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,130,190,.3);
+    box-shadow: 0 0 50px rgba(255,30,140,.25);
+}
+
+.welcomeBox h1 {
+    font-size: 42px;
+    color: #ff9bd5;
+    text-shadow: 0 0 20px #ff238d;
+    margin-bottom: 20px;
+}
+
+.welcomeBox p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Contenido */
+main {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+h1 {
+    font-size: clamp(45px, 12vw, 85px);
+    color: #ff75bd;
     text-shadow:
-        0 0 10px #ff70b8,
-        0 0 30px #ff2090,
-        0 0 70px #ff007f;
-    animation:pulse 1.8s infinite;
+        0 0 10px #ff168d,
+        0 0 30px #ff168d,
+        0 0 60px #ff168d;
+    animation: pulse 2s infinite alternate;
 }
 
-@keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.06)}
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.04); }
 }
 
-.subtitle{
-    margin-top:12px;
-    font-size:17px;
-    opacity:.9;
+.subtitle {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: .9;
 }
 
-button{
-    display:block;
-    margin:30px auto 0;
-    border:0;
-    border-radius:60px;
-    padding:20px 42px;
-    color:white;
-    font-size:23px;
-    font-weight:bold;
-    letter-spacing:2px;
-    background:linear-gradient(135deg,#ff4ca3,#ff006e);
+button {
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin: 12px 5px;
+    background: linear-gradient(135deg, #ff2f91, #ff69b4);
     box-shadow:
-        0 0 15px #ff3d9a,
-        0 0 45px #ff007f88;
-    transition:.2s;
+        0 0 15px rgba(255,50,150,.6),
+        inset 0 1px rgba(255,255,255,.4);
+    transition: .25s;
 }
 
-button:active{
-    transform:scale(.88);
+button:hover {
+    transform: scale(1.08);
 }
 
-.music{
-    margin-top:15px;
-    padding:12px 22px;
-    font-size:15px;
-    background:#ffffff18;
-    box-shadow:none;
-    border:1px solid #ffffff35;
+button:active {
+    transform: scale(.95);
 }
 
-.counter{
-    margin-top:18px;
-    opacity:.7;
-    font-size:14px;
+.counter {
+    margin-top: 20px;
+    font-size: 20px;
 }
 
-/* Flores */
-.flower{
-    position:fixed;
-    z-index:3;
-    pointer-events:none;
-    animation:flowerIn 1.5s ease-out forwards;
-    filter:drop-shadow(0 0 12px #ffffff99);
+#flowerArea {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
 }
 
-@keyframes flowerIn{
-    0%{
-        transform:scale(0) rotate(-45deg);
-        opacity:0;
+/* FLORES REALES */
+.realFlower {
+    position: absolute;
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        0 0 15px rgba(255,100,180,.8),
+        0 0 35px rgba(255,30,140,.4);
+
+    animation: flowerAppear 1s ease-out forwards,
+               flowerFloat 5s ease-in-out 1s infinite alternate;
+}
+
+@keyframes flowerAppear {
+    0% {
+        transform: scale(0) rotate(-30deg);
+        opacity: 0;
     }
-    40%{
-        transform:scale(1.35) rotate(15deg);
-        opacity:1;
+
+    70% {
+        transform: scale(1.15) rotate(8deg);
+        opacity: 1;
     }
-    100%{
-        transform:scale(1) rotate(0);
-        opacity:1;
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes flowerFloat {
+    from {
+        margin-top: -8px;
+    }
+
+    to {
+        margin-top: 12px;
     }
 }
 
 /* Corazones */
-.heart{
-    position:fixed;
-    bottom:-40px;
-    pointer-events:none;
-    z-index:2;
-    animation:up linear forwards;
-    opacity:.8;
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 25px;
+    pointer-events: none;
+    animation: heartUp 4s linear forwards;
+    z-index: 20;
 }
 
-@keyframes up{
-    to{
-        transform:translateY(-115vh) rotate(360deg);
-        opacity:0;
+@keyframes heartUp {
+    from {
+        transform: translateY(0) scale(.5) rotate(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) scale(1.5) rotate(25deg);
+        opacity: 0;
     }
 }
 
-/* Mensaje */
-.message{
-    position:fixed;
-    top:12%;
-    left:50%;
-    transform:translate(-50%,-20px);
-    opacity:0;
-    z-index:10;
-    font-size:22px;
-    font-weight:bold;
-    text-align:center;
-    text-shadow:0 0 15px #ff4da6;
-    transition:.4s;
-    pointer-events:none;
+/* Ventanas */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,0,8,.82);
+    backdrop-filter: blur(8px);
+    z-index: 80;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.message.show{
-    transform:translate(-50%,0);
-    opacity:1;
+.letter {
+    width: min(90%, 500px);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 35px 25px;
+    text-align: center;
+
+    background:
+        linear-gradient(rgba(255,230,242,.94), rgba(255,210,232,.94)),
+        url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=90")
+        center/cover;
+
+    color: #4d1234;
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 40px rgba(255,50,160,.6),
+        0 0 100px rgba(255,20,120,.3);
+
+    animation: letterIn .7s ease;
 }
 
-/* Firma */
-.signature{
-    margin-top:25px;
-    font-size:14px;
-    opacity:.55;
+@keyframes letterIn {
+    from {
+        transform: scale(.5) rotate(-5deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+.letter h2 {
+    color: #d62476;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.letter p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 14px 0;
+}
+
+.special {
+    color: #d41468;
+    font-weight: bold;
+}
+
+/* Jardín */
+.garden {
+    position: relative;
+    width: min(95vw, 600px);
+    min-height: 500px;
+    overflow: hidden;
+    padding: 40px 20px;
+    border-radius: 30px;
+
+    background:
+        linear-gradient(rgba(10,0,10,.45), rgba(10,0,10,.75)),
+        url("https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=1200&q=90")
+        center/cover;
+
+    box-shadow: 0 0 70px rgba(255,30,140,.45);
+}
+
+.garden h2 {
+    position: relative;
+    z-index: 5;
+    font-size: 38px;
+    color: #ff9bd4;
+    text-shadow: 0 0 15px #ff258e;
+}
+
+.garden p {
+    position: relative;
+    z-index: 5;
+    margin: 20px auto;
+    max-width: 430px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.gardenFlower {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.7);
+    box-shadow: 0 0 20px rgba(255,70,170,.7);
+    animation: gardenFloat 4s infinite alternate ease-in-out;
+}
+
+@keyframes gardenFloat {
+    from {
+        transform: translateY(-5px) rotate(-3deg);
+    }
+
+    to {
+        transform: translateY(8px) rotate(4deg);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+#musicButton {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,130,190,.5);
+    font-size: 15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="stars" id="stars"></div>
 
-    <div class="small">Tengo algo que decirte...</div>
+<!-- PANTALLA INICIAL -->
+<div id="welcome">
+    <div class="welcomeBox">
+
+        <h1>Una sorpresa para ti ❤️</h1>
+
+        <p>
+            Preparé algo especial para ti...<br>
+            porque te mereces todo lo bonito del mundo. 🌷
+        </p>
+
+        <button onclick="startPage()">
+            Entrar ❤️
+        </button>
+
+    </div>
+</div>
+
+<!-- FLORES -->
+<div id="flowerArea"></div>
+
+<!-- PÁGINA PRINCIPAL -->
+<main>
+
+    <div class="subtitle">
+        Tengo algo que decirte...
+    </div>
 
     <h1>TE AMO ❤️</h1>
 
-    <div class="subtitle">
+    <p class="subtitle">
         Presiona el botón cada vez que quieras una flor 🌷
-    </div>
+    </p>
 
-    <button onclick="teAmo()">
+    <br>
+
+    <button onclick="giveFlower()">
         TE AMO ❤️
     </button>
 
-    <button class="music" onclick="toggleMusic()" id="musicBtn">
-        🎵 Poner música
+    <br>
+
+    <button id="musicButton" onclick="toggleMusic()">
+        🎵 Música
     </button>
 
     <div class="counter">
-        Flores para ti: <span id="count">0</span> 🌸
+        Flores para ti:
+        <strong id="count">0</strong> 🌷
     </div>
 
-    <div class="signature">
+    <p style="margin-top:25px; opacity:.7;">
         Hecho especialmente para ti ❤️
+    </p>
+
+</main>
+
+<!-- CARTA DE 10 FLORES -->
+<div class="overlay" id="letterOverlay">
+
+    <div class="letter">
+
+        <h2>Para el amor de mi vida 🌷</h2>
+
+        <p>
+            Tal vez estas flores parezcan muchas...
+            pero en realidad no son ni una pequeña parte
+            de todo lo que siento por ti.
+        </p>
+
+        <p>
+            Cada vez que presionaste el botón,
+            apareció una flor.
+        </p>
+
+        <p>
+            Y así como las flores siguen creciendo,
+            <span class="special">
+                mi amor por ti también. ❤️
+            </span>
+        </p>
+
+        <p class="special">
+            Y todavía me faltan millones de flores
+            para demostrarte cuánto te amo.
+        </p>
+
+        <p>
+            Gracias por existir, por estar en mi vida
+            y por hacer mis días mucho más bonitos.
+        </p>
+
+        <p>
+            Te amo muchísimo. ❤️
+        </p>
+
+        <button onclick="closeLetter()">
+            Seguir regalándote flores 🌷
+        </button>
+
     </div>
 
 </div>
 
-<div id="message" class="message">
-    🌷 Una flor para ti ❤️
+<!-- SEGUNDA SORPRESA -->
+<div class="overlay" id="gardenOverlay">
+
+    <div class="garden" id="garden">
+
+        <h2>🌷 Un jardín para ti 🌷</h2>
+
+        <p>
+            Si pudiera regalarte una flor por cada vez
+            que pienso en ti, tendría un jardín infinito.
+        </p>
+
+        <p>
+            Y aun así, seguirían faltando flores
+            para decirte cuánto te amo. 🥹❤️
+        </p>
+
+        <button onclick="closeGarden()">
+            Seguir ❤️
+        </button>
+
+    </div>
+
 </div>
 
-<!-- Música -->
-<audio id="music" loop>
+<audio id="music" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-let count = 0;
+/* =========================
+   FLORES REALES
+========================= */
 
 const flowers = [
-    "🌷",
-    "🌸",
-    "🌺",
-    "🌼",
-    "🪻",
-    "🌹",
-    "💐"
+
+    // Gerbera
+    "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=500&q=90",
+
+    // Tulipán
+    "https://images.unsplash.com/photo-1520863187037-9f2f7f9b9a5e?auto=format&fit=crop&w=500&q=90",
+
+    // Lirio
+    "https://images.unsplash.com/photo-1509223197845-458d87318791?auto=format&fit=crop&w=500&q=90",
+
+    // Flores rosas
+    "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=500&q=90",
+
+    // Tulipanes
+    "https://images.unsplash.com/photo-1520013333831-acd3f7d4c8d8?auto=format&fit=crop&w=500&q=90"
 ];
 
-const messages = [
-    "🌷 Una flor para la niña que amo ❤️",
-    "🌸 Porque te mereces todas las flores",
-    "🌺 Te amo muchísimo",
-    "🌼 Eres demasiado especial para mí",
-    "🪻 Una flor más para ti",
-    "🌹 Te volvería a elegir una y otra vez",
-    "💐 Todas estas flores son para ti ❤️"
-];
+let count = 0;
 
-function teAmo(){
+const music = document.getElementById("music");
+
+
+/* =========================
+   INICIAR
+========================= */
+
+function startPage() {
+
+    document.getElementById("welcome").style.display = "none";
+
+    music.volume = 0.7;
+
+    music.play().catch(() => {
+        console.log("El navegador bloqueó el autoplay.");
+    });
+
+    lanzarCorazones();
+}
+
+
+/* =========================
+   DAR FLOR
+========================= */
+
+function giveFlower() {
 
     count++;
 
     document.getElementById("count").textContent = count;
 
-    /* Crear flor */
-    const flower = document.createElement("div");
+    const flower =
+        document.createElement("img");
 
-    flower.className = "flower";
+    flower.className = "realFlower";
 
-    flower.textContent =
-        flowers[Math.floor(Math.random()*flowers.length)];
+    flower.src =
+        flowers[Math.floor(Math.random() * flowers.length)];
 
-    flower.style.left =
-        (Math.random()*88 + 4) + "vw";
+    /* Posición aleatoria */
 
-    flower.style.top =
-        (Math.random()*75 + 8) + "vh";
+    const x =
+        Math.random() * (window.innerWidth - 130);
 
-    flower.style.fontSize =
-        (45 + Math.random()*35) + "px";
+    const y =
+        Math.random() * (window.innerHeight - 180) + 70;
 
-    document.body.appendChild(flower);
+    flower.style.left = x + "px";
+    flower.style.top = y + "px";
 
-    /* Mensaje */
-    const message = document.getElementById("message");
+    /* Tamaño aleatorio */
 
-    message.textContent =
-        messages[Math.floor(Math.random()*messages.length)];
+    const size =
+        85 + Math.random() * 55;
 
-    message.classList.add("show");
+    flower.style.width = size + "px";
+    flower.style.height = size + "px";
 
-    setTimeout(()=>{
-        message.classList.remove("show");
-    },1800);
+    document.getElementById("flowerArea")
+        .appendChild(flower);
 
-    /* Música comienza con el primer clic */
-    const music = document.getElementById("music");
+    lanzarCorazones();
 
-    if(music.paused){
-        music.volume = 0.55;
-        music.play().catch(()=>{});
-        document.getElementById("musicBtn").textContent =
-            "🔊 Música encendida";
+    /* 10 flores */
+
+    if (count === 10) {
+
+        setTimeout(() => {
+
+            document.getElementById("letterOverlay")
+                .style.display = "flex";
+
+        }, 600);
+
+    }
+
+    /* 20 flores */
+
+    if (count === 20) {
+
+        setTimeout(() => {
+
+            document.getElementById("gardenOverlay")
+                .style.display = "flex";
+
+            createGarden();
+
+        }, 700);
+
+    }
+
+}
+
+
+/* =========================
+   CERRAR CARTA
+========================= */
+
+function closeLetter() {
+
+    document.getElementById("letterOverlay")
+        .style.display = "none";
+
+}
+
+
+/* =========================
+   JARDÍN
+========================= */
+
+function createGarden() {
+
+    const garden =
+        document.getElementById("garden");
+
+    for (let i = 0; i < 18; i++) {
+
+        const flower =
+            document.createElement("img");
+
+        flower.className = "gardenFlower";
+
+        flower.src =
+            flowers[Math.floor(Math.random() * flowers.length)];
+
+        flower.style.left =
+            Math.random() * 85 + "%";
+
+        flower.style.top =
+            35 + Math.random() * 58 + "%";
+
+        flower.style.animationDelay =
+            Math.random() * 3 + "s";
+
+        const size =
+            55 + Math.random() * 50;
+
+        flower.style.width = size + "px";
+        flower.style.height = size + "px";
+
+        garden.appendChild(flower);
     }
 }
 
 
-/* Música */
-function toggleMusic(){
+/* =========================
+   CERRAR JARDÍN
+========================= */
 
-    const music = document.getElementById("music");
-    const btn = document.getElementById("musicBtn");
+function closeGarden() {
 
-    if(music.paused){
+    document.getElementById("gardenOverlay")
+        .style.display = "none";
 
-        music.volume = 0.55;
-
-        music.play().then(()=>{
-            btn.textContent = "🔊 Música encendida";
-        }).catch(()=>{
-            alert("Pon el archivo musica.mp3 junto al HTML ❤️");
-        });
-
-    }else{
-
-        music.pause();
-        btn.textContent = "🎵 Poner música";
-    }
 }
 
 
-/* Corazones flotando */
-setInterval(()=>{
+/* =========================
+   CORAZONES
+========================= */
 
-    const heart = document.createElement("div");
+function crearCorazon() {
+
+    const heart =
+        document.createElement("div");
 
     heart.className = "heart";
 
-    const hearts = [
-        "❤️","💗","💖","💕","💓","💞"
-    ];
-
     heart.textContent =
-        hearts[Math.floor(Math.random()*hearts.length)];
+        Math.random() > .5 ? "❤️" : "💕";
 
     heart.style.left =
-        Math.random()*100 + "vw";
+        Math.random() * 100 + "vw";
 
     heart.style.fontSize =
-        (15 + Math.random()*25) + "px";
+        18 + Math.random() * 25 + "px";
 
     heart.style.animationDuration =
-        (5 + Math.random()*5) + "s";
+        3 + Math.random() * 3 + "s";
 
     document.body.appendChild(heart);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         heart.remove();
-    },10000);
+    }, 6000);
+}
 
-},650);
+
+function lanzarCorazones() {
+
+    for (let i = 0; i < 8; i++) {
+
+        setTimeout(() => {
+            crearCorazon();
+        }, i * 120);
+
+    }
+
+}
+
+
+/* =========================
+   MÚSICA
+========================= */
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play();
+
+        document.getElementById("musicButton")
+            .textContent = "🔊 Música";
+
+    } else {
+
+        music.pause();
+
+        document.getElementById("musicButton")
+            .textContent = "🔇 Música";
+
+    }
+
+}
+
+
+/* =========================
+   ESTRELLAS
+========================= */
+
+const stars =
+    document.getElementById("stars");
+
+for (let i = 0; i < 80; i++) {
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================
+   INTENTO DE AUTOPLAY
+========================= */
+
+window.addEventListener("load", () => {
+
+    music.volume = 0.7;
+
+    music.play().catch(() => {
+        // El navegador puede bloquear
+        // música automática con sonido.
+    });
+
+});
 
 </script>
 
